@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import configparser
+import socket
+import sys
+import time
+
+import requests
+
+
+def send_message(msg: str) -> None:
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    TOKEN: str = config['DEFAULT']['TOKEN']
+    CHAT_ID: str = config['DEFAULT']['CHAT_ID']
+    HOSTNAME: str= socket.gethostname()
+    now: str = time.strftime("%I:%M%p on %B %d, %Y")
+    new_msg: str = f"{HOSTNAME}({now}): \n {msg}"
+    url: str = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={new_msg}"
+    print(requests.get(url).json())  # Send message and print request output
+
+
+if __name__ == '__main__':
+    message: str = ': '.join(sys.argv[1:])
+    send_message(msg=message)
