@@ -1,0 +1,10 @@
+[project]
+name = "telegram-notification-python"
+version = "0.1.0"
+description = "Python CLI script to send telegram messages to self-created bots."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
