@@ -61,7 +61,7 @@ This is a simple Telegram bot that sends notifications to a specified chat ID us
 ## Usage
 To send a notification, run the following command:
 ```bash
-python send_notification.py "Your notification message"
+python telegram.py "Your notification message"
 ```
 
 ## License
